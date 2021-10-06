@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionReusableView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CollectionViewHeader" id="U6b-Vx-4bR" customClass="CollectionViewHeader" customModule="SampleMyPage" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="430" height="174"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5BZ-QD-jhS">
+                    <rect key="frame" x="0.0" y="0.0" width="430" height="174"/>
+                    <subviews>
+                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="elo-pT-lFM">
+                            <rect key="frame" x="20" y="15" width="390" height="149"/>
+                            <subviews>
+                                <stackView opaque="NO" contentMode="scaleToFill" alignment="top" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="mmz-M7-Ysm">
+                                    <rect key="frame" x="0.0" y="0.0" width="390" height="92"/>
+                                    <subviews>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="onepiece14_enel" translatesAutoresizingMaskIntoConstraints="NO" id="5R3-6I-fvw">
+                                            <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="80" id="U2w-pe-lGY"/>
+                                                <constraint firstAttribute="height" constant="80" id="laI-fZ-E0a"/>
+                                            </constraints>
+                                        </imageView>
+                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="v05-Cg-t0C">
+                                            <rect key="frame" x="105" y="0.0" width="285" height="85.5"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ユーザー名" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wxf-VB-6aZ">
+                                                    <rect key="frame" x="0.0" y="0.0" width="92" height="21.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QFd-q6-mOE">
+                                                    <rect key="frame" x="0.0" y="26.5" width="120.5" height="59"/>
+                                                    <string key="text">自己紹介しまーす。
+自己紹介しまーす。
+自己紹介しまーす。</string>
+                                                    <color key="textColor" systemColor="labelColor"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                </textView>
+                                            </subviews>
+                                        </stackView>
+                                    </subviews>
+                                </stackView>
+                                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="Qco-3b-XvN">
+                                    <rect key="frame" x="0.0" y="100" width="390" height="49"/>
+                                    <subviews>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3jP-5s-9aN">
+                                            <rect key="frame" x="0.0" y="0.0" width="126.5" height="49"/>
+                                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <state key="normal" title="Button"/>
+                                            <buttonConfiguration key="configuration" style="plain" title="0" subtitle="投稿" titleAlignment="center">
+                                                <fontDescription key="titleFontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="16"/>
+                                            </buttonConfiguration>
+                                        </button>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ege-iT-zeG">
+                                            <rect key="frame" x="131.5" y="0.0" width="127" height="49"/>
+                                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <state key="normal" title="Button"/>
+                                            <buttonConfiguration key="configuration" style="plain" title="0" subtitle="フォロワー" titleAlignment="center">
+                                                <fontDescription key="titleFontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="16"/>
+                                            </buttonConfiguration>
+                                        </button>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oFg-De-bh8">
+                                            <rect key="frame" x="263.5" y="0.0" width="126.5" height="49"/>
+                                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <state key="normal" title="Button"/>
+                                            <buttonConfiguration key="configuration" style="plain" title="0" subtitle="フォロー中" titleAlignment="center">
+                                                <fontDescription key="titleFontDescription" type="system" pointSize="16"/>
+                                            </buttonConfiguration>
+                                        </button>
+                                    </subviews>
+                                </stackView>
+                            </subviews>
+                        </stackView>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstItem="elo-pT-lFM" firstAttribute="top" secondItem="5BZ-QD-jhS" secondAttribute="top" constant="15" id="Oax-lZ-CFt"/>
+                        <constraint firstItem="elo-pT-lFM" firstAttribute="leading" secondItem="5BZ-QD-jhS" secondAttribute="leading" constant="20" id="Ov5-DH-47x"/>
+                        <constraint firstAttribute="trailing" secondItem="elo-pT-lFM" secondAttribute="trailing" constant="20" id="f6N-6j-jIf"/>
+                        <constraint firstAttribute="bottom" secondItem="elo-pT-lFM" secondAttribute="bottom" constant="10" id="tLq-5e-rSz"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="VXr-Tz-HHm"/>
+            <constraints>
+                <constraint firstItem="5BZ-QD-jhS" firstAttribute="top" secondItem="U6b-Vx-4bR" secondAttribute="top" id="1i7-oV-pUO"/>
+                <constraint firstItem="5BZ-QD-jhS" firstAttribute="trailing" secondItem="VXr-Tz-HHm" secondAttribute="trailing" id="CXd-B9-sIJ"/>
+                <constraint firstAttribute="bottom" secondItem="5BZ-QD-jhS" secondAttribute="bottom" id="P5J-pF-Zzb"/>
+                <constraint firstItem="5BZ-QD-jhS" firstAttribute="leading" secondItem="VXr-Tz-HHm" secondAttribute="leading" id="eKj-3B-woi"/>
+            </constraints>
+            <point key="canvasLocation" x="131.8840579710145" y="93.080357142857139"/>
+        </collectionReusableView>
+    </objects>
+    <resources>
+        <image name="onepiece14_enel" width="400" height="400"/>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
