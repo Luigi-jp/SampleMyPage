@@ -25,7 +25,6 @@ class ViewController: UIViewController {
             let layout = UICollectionViewFlowLayout()
             layout.minimumLineSpacing = space
             layout.minimumInteritemSpacing = space
-//            layout.headerReferenceSize = CGSize(width: collectionView.bounds.width, height: 400)
             collectionView.collectionViewLayout = layout
         }
     }
@@ -67,7 +66,7 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource, 
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
         let header = self.collectionView(collectionView, viewForSupplementaryElementOfKind: UICollectionView.elementKindSectionHeader, at: IndexPath(row: 0, section: section))
-        let headerSize = header.systemLayoutSizeFitting(CGSize(width: collectionView.bounds.width, height: UIView.layoutFittingCompressedSize.height), withHorizontalFittingPriority: .required, verticalFittingPriority: .defaultLow)
+        let headerSize = header.systemLayoutSizeFitting(CGSize(width: collectionView.bounds.width, height: UIView.layoutFittingCompressedSize.height), withHorizontalFittingPriority: .required, verticalFittingPriority: .fittingSizeLevel)
         return headerSize
     }
     
