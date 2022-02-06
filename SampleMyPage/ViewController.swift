@@ -9,31 +9,56 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    private let reuseCellId = "CollectionViewCell"
-    private let headerClassName = "CollectionViewHeader"
-    private let reuseHeaderId = "CollectionViewHeader"
     private let space: CGFloat = 2
     private let column: CGFloat = 3
+    
+    var safeAreaTop: CGFloat { self.view.safeAreaInsets.top }
+    var headerViewHeight: CGFloat!
 
     @IBOutlet weak var collectionView: UICollectionView! {
         didSet {
-            // カスタムヘッダの登録
-            let headerNib = UINib(nibName: headerClassName, bundle: nil)
-            collectionView.register(headerNib, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: reuseHeaderId)
-            
+            collectionView.register(UINib(nibName: CollectionViewCell.identifier, bundle: nil), forCellWithReuseIdentifier: CollectionViewCell.identifier)
             // レイアウトの設定
             let layout = UICollectionViewFlowLayout()
             layout.minimumLineSpacing = space
             layout.minimumInteritemSpacing = space
             collectionView.collectionViewLayout = layout
+            
+            collectionView.dataSource = self
+            collectionView.delegate = self
         }
     }
+    @IBOutlet weak var mainScrollView: UIScrollView! {
+        didSet {
+            mainScrollView.delegate = self
+        }
+    }
+    @IBOutlet weak var collectionScrollView: UIScrollView!
+    @IBOutlet weak var tabBarStackView: UIStackView!
+    @IBOutlet weak var postCollectionView: UICollectionView! {
+        didSet {
+//            postCollectionView.isScrollEnabled = false
+            postCollectionView.bounces = false
+        }
+    }
+    @IBOutlet weak var likePostCollectionView: UICollectionView! {
+        didSet {
+            likePostCollectionView.isScrollEnabled = false
+        }
+    }
+    @IBOutlet weak var headerView: UIView!
+    @IBOutlet weak var headerViewTopConstraint: NSLayoutConstraint!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
 
+        headerViewHeight = headerView.frame.height
+        collectionView.contentInset = UIEdgeInsets(top: headerViewHeight, left: 0, bottom: 0, right: 0)
     }
+    
+    
 }
 
 extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
@@ -42,8 +67,10 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource, 
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseCellId, for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CollectionViewCell.identifier, for: indexPath) as! CollectionViewCell
+        let row = indexPath.row
         cell.backgroundColor = UIColor.blue
+        cell.label.text = String(row)
         return cell
     }
     
@@ -52,32 +79,10 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource, 
         let cellSize: CGFloat = (self.view.bounds.width / column) - space
         return CGSize(width: cellSize, height: cellSize)
     }
-    
-    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        guard let collectionViewHeader = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: reuseHeaderId, for: indexPath) as? CollectionViewHeader else {
-            fatalError("ヘッダーがありません。")
-        }
-        if kind == UICollectionView.elementKindSectionHeader {
-            return collectionViewHeader
-        }
-        print("ヘッダーなし")
-        return UICollectionReusableView()
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-        let header = self.collectionView(collectionView, viewForSupplementaryElementOfKind: UICollectionView.elementKindSectionHeader, at: IndexPath(row: 0, section: section))
-        let headerSize = header.systemLayoutSizeFitting(CGSize(width: collectionView.bounds.width, height: UIView.layoutFittingCompressedSize.height), withHorizontalFittingPriority: .required, verticalFittingPriority: .fittingSizeLevel)
-        return headerSize
-    }
-    
-//    // 横のスペース？
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-//        return space
-//    }
-//
-//    // 縦のスペース?
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-//        return space
-//    }
 }
 
+extension ViewController: UIScrollViewDelegate {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        headerViewTopConstraint.constant = max(-(scrollView.contentOffset.y + headerViewHeight), -headerViewHeight + 50)
+    }
+}
